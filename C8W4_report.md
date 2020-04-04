@@ -65,7 +65,7 @@ dim(train1)
 
 ## Model 1
 
-First relevel the classe variable. Then fit a multinominal model on all predictors in "train" data set. Generate predictions on the subsetted train data set. This gives accuracy of 28.4%.
+First relevel the classe variable. Then fit a multinominal model on all predictors in "train" data set. Generate predictions on the subsetted train data set. This gives accuracy of 66%.
 
 ```{r}
 library(nnet)
@@ -77,7 +77,7 @@ ctable <- table(train1$classe, train.mn1$pred)
 round((sum(diag(ctable))/sum(ctable))*100, 2)
 ```
 
-Transform the test set in the same way, and predict on the test set using the "train.mn1" model. This gives accuracy of only 20%, lower than that in the training set. Indicates that there may be an issue of overfitting.
+Transform the test set in the same way, and predict on the test set using the "train.mn1" model. This gives accuracy of only 54%, lower than that in the training set. Indicates that there may be an issue of overfitting.
 
 ```{r}
 test1 <- test[, colwant1]
@@ -97,7 +97,7 @@ train2 <- train1[, colwant2]
 nsv2 <- nearZeroVar(train2, saveMetrics = TRUE)
 ```
 
-Similar to before, relevel the classe variable. Then fit a multinominal model on all predictors in "train" data set. Generate predictions on the subsetted train data set. This gives accuracy of XX%.
+Similar to before, relevel the classe variable. Then fit a multinominal model on all predictors in "train" data set. Generate predictions on the subsetted train data set. This gives accuracy of 71%.
 
 ```{r}
 library(nnet)
@@ -109,7 +109,7 @@ ctable <- table(train2$classe, train.mn2$pred)
 round((sum(diag(ctable))/sum(ctable))*100, 2)
 ```
 
-Transform the test set in the same way, and predict on the test set using the "train.mn2" model. This gives accuracy of only XX%, lower than that in the training set. Indicates that there may be an issue of overfitting.
+Transform the test set in the same way, and predict on the test set using the "train.mn2" model. This gives accuracy of only 57%, lower than that in the training set though higher than in the previous model. This model has a better out of sample error rate.
 
 ```{r}
 test2 <- test1[, colwant2]
